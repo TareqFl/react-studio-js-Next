@@ -1,0 +1,40 @@
+{
+  "name": "next-studio-js-next",
+  "description": "Multiple track web audio editor and player with waveform preview and annotation.",
+  "version": "0.1.0",
+  "website": "https://tareqfl.github.io/react-studio-js-next",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.15",
+    "@mui/material": "^5.14.15",
+    "@types/event-emitter": "^0.3.4",
+    "@types/file-saver": "^2.0.6",
+    "@types/uuid": "^9.0.6",
+    "event-emitter": "^0.3.5",
+    "file-saver": "^2.0.5",
+    "next": "14.0.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-loader-spinner": "^5.4.5",
+    "react-studio-js": "^0.1.1",
+    "sass": "^1.69.5",
+    "tone": "^14.7.77",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.0",
+    "typescript": "^5"
+  }
+}
