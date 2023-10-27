@@ -82,14 +82,14 @@ const CustomTimeLine = ({ bottom, ee }: { bottom: number; ee: any }) => {
       setSeeker(() => 0);
       setIsplaying(() => !isPlaying);
     }
-  }, []);
+  }, [ee, isPlaying, bottom]);
 
   useEffect(() => {
     if (code === 'Space' && shiftKey) {
       isPlaying ? ee.emit('play') : ee.emit('pause');
       setIsplaying(!isPlaying);
     }
-  }, [key, code, shiftKey]);
+  }, [key, code, shiftKey, ee, isPlaying]);
 
   return (
     <Box
