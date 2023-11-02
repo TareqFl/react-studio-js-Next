@@ -1,5 +1,11 @@
 'use client';
-import React, { ChangeEvent, useCallback, useReducer, useRef } from 'react';
+import React, {
+  ChangeEvent,
+  useCallback,
+  useEffect,
+  useReducer,
+  useRef,
+} from 'react';
 import ReactStudio from 'react-studio-js';
 import * as Tone from 'tone';
 import EventEmitter from 'event-emitter';
@@ -121,7 +127,9 @@ const Editor = () => {
         annotation: TAnnotation,
         i: number,
         annotations: TAnnotation[],
-        opts: {}
+        opts: {
+          linkEndpoints: true | false;
+        }
       ) => {
         if (i === annotations.length - 1) {
           return console.log('not possible');
@@ -185,12 +193,16 @@ const Editor = () => {
               width: 175,
               widgets: {
                 collapse: false,
+                muteOrSolo: true,
+                volume: true,
+                stereoPan: true,
+                remove: true,
               },
             },
             annotationList: {
               annotations: [],
               controls: actions,
-              editable: true,
+              editable: false,
               isContinuousPlay: false,
               linkEndpoints: false,
             },

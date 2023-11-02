@@ -2,7 +2,7 @@ import { Pause, PlayArrow } from '@mui/icons-material';
 import { Box, IconButton, Stack, Tooltip, Typography } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
 import { useThemeSettings } from '../../../hooks';
-
+import { secondsToHMS } from '@/utils/timeformatter';
 const CustomTimeLine = ({ bottom, ee }: { bottom: number; ee: any }) => {
   const { theme, keyPress } = useThemeSettings();
   const { key, shiftKey, code } = keyPress;
@@ -25,24 +25,6 @@ const CustomTimeLine = ({ bottom, ee }: { bottom: number; ee: any }) => {
   // Play Button Ref
   const playRef = useRef(null);
   useEffect(() => {
-    function secondsToHMS(seconds: number) {
-      const hours = Math.floor(seconds / 3600);
-      let minutes = Math.floor((seconds % 3600) / 60);
-      if (minutes > 60) {
-        minutes = parseFloat(String(0.0));
-      }
-      // const remainingSeconds = Math.round(seconds);
-      let remainingSeconds = parseFloat(String(seconds % 60)).toFixed(2);
-      if (Number(remainingSeconds) > 60) {
-        remainingSeconds = String(parseFloat(String(0.01)));
-      }
-
-      const formattedHours = hours.toString().padStart(2, '0');
-      const formattedMinutes = minutes.toString().padStart(2, '0');
-      const formattedSeconds = remainingSeconds.toString().padStart(2, '0');
-
-      return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-    }
     // get the total duration time of the longest track
     ee.on('getTrackDuration', (value: number) => {
       var newDuration = secondsToHMS(value);
@@ -82,7 +64,7 @@ const CustomTimeLine = ({ bottom, ee }: { bottom: number; ee: any }) => {
       setSeeker(() => 0);
       setIsplaying(() => !isPlaying);
     }
-  }, [ee, isPlaying, bottom]);
+  }, [ee, bottom]);
 
   useEffect(() => {
     if (code === 'Space' && shiftKey) {
